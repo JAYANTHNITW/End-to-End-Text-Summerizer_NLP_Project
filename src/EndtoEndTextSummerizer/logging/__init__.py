@@ -18,4 +18,4 @@ logging.basicConfig(
     ]
 )
 
-logger = logging.getLogger("End-to-End-Text-Summerizer")
+logger = logging.getLogger("EndtoEndTextSummerizer")

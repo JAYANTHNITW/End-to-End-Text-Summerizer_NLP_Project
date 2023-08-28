@@ -7,7 +7,7 @@ __version__ = "0.0.0"
 
 REPO_NAME= "End-to-End-Text-Summerizer_NLP_Project"
 AUTHOR_USER_NAME = 'Kothapalli Jayanth'
-SRC_REPO = "End-to-End-Text-Summerizer"
+SRC_REPO = "EndtoEndTextSummerizer"
 AUTHOR_EMAIL = "kothapallijayanth521@gmail.com"
 
 setuptools.setup(
