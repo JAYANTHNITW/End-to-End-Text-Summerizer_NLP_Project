@@ -1,6 +1,6 @@
-from EndtoEndTextSummerizer.constants import *
-from EndtoEndTextSummerizer.utils.common import read_yaml, create_directories 
-from EndtoEndTextSummerizer.entity import (DataIngestionConfig,
+from src.EndtoEndTextSummerizer.constants import *
+from src.EndtoEndTextSummerizer.utils.common import read_yaml, create_directories 
+from src.EndtoEndTextSummerizer.entity import (DataIngestionConfig,
                                            DataValidationConfig,
                                            DataTransformationConfig)
 

@@ -23,4 +23,4 @@ class DataValidationConfig:
 class DataTransformationConfig:
     root_dir : Path
     data_path: Path
-    tokenizer_name: Path
+    tokenizer_name: Path 

@@ -1,11 +1,11 @@
 import os
 import urllib.request as request
 import zipfile
-from EndtoEndTextSummerizer.logging import logger
-from EndtoEndTextSummerizer.utils.common import get_size
+from src.EndtoEndTextSummerizer.logging import logger
+from src.EndtoEndTextSummerizer.utils.common import get_size
 
 from pathlib import Path
-from EndtoEndTextSummerizer.entity import DataIngestionConfig
+from src.EndtoEndTextSummerizer.entity import DataIngestionConfig
 
 class DataIngestion:
     def __init__(self, config: DataIngestionConfig):

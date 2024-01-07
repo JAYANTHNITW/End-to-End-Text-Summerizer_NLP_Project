@@ -1,6 +1,6 @@
 import os
-from EndtoEndTextSummerizer.logging import logger
-from EndtoEndTextSummerizer.entity import DataValidationConfig
+from src.EndtoEndTextSummerizer.logging import logger
+from src.EndtoEndTextSummerizer.entity import DataValidationConfig
 
 class DataValidation:
     def __init__(self, config: DataValidationConfig):

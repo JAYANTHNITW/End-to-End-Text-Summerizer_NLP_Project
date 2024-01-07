@@ -1,6 +1,6 @@
-from EndtoEndTextSummerizer.config.configuration import ConfigurationManager
-from EndtoEndTextSummerizer.components.data_transformation import DataTransformation
-from EndtoEndTextSummerizer.logging import logger
+from src.EndtoEndTextSummerizer.config.configuration import ConfigurationManager
+from src.EndtoEndTextSummerizer.components.data_transformation import DataTransformation
+from src.EndtoEndTextSummerizer.logging import logger
 
 class DataTransformationTrainingPipeline:
     def __init__(self):
