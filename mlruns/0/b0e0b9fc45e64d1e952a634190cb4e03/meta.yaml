@@ -1,0 +1,15 @@
+artifact_uri: file:///d:/End-to-End-Text-Summerizer_NLP_Project/mlruns/0/b0e0b9fc45e64d1e952a634190cb4e03/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: b0e0b9fc45e64d1e952a634190cb4e03
+run_name: artifacts/model_trainer
+run_uuid: b0e0b9fc45e64d1e952a634190cb4e03
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1704640321102
+status: 1
+tags: []
+user_id: JAYANTH
