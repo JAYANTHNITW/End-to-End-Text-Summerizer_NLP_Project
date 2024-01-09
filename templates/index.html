@@ -1,90 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>JaySummbot - Text Summarizer</title>
+  <title>Text Summarizer</title>
   <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-
-    header {
-      background-color: #1c1d1e; /* You can choose your desired color */
-      color: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start; /* Align content to the start of the flex container */
-      padding: 5px;
-    }
-
-    #logo {
-      max-width: 50px; /* Adjust the size of the logo */
-      vertical-align: middle;
-      margin-right: 10px;
-      border-radius: 50%; /* Apply border-radius for a circular shape */
-    }
-
-    #heading {
-      font-size: 24px;
-      margin-left: 10px; /* Adjust the gap between the logo and heading */
-    }
-
-    .container {
-      max-width: 800px;
-      margin: 20px auto;
-    }
-
-    .logo-section {
-      display: flex;
-      align-items: center;
-      margin-bottom: 20px;
-    }
-
-    /* Adjust the styles for input and output sections */
-    .input-section,
-    .output-section {
-      width: 100%; /* Take up the entire width */
-    }
-
-    .output-section {
-      margin-top: 20px; /* Add some space between input and output */
-    }
-
-    textarea {
-      width: 100%;
-      height: 150px; /* Adjust the height of the textarea */
-      resize: none; /* Disable resizing of the textarea */
-    }
-
-    button {
-      width: 100%;
-      margin-top: 10px;
-    }
-  </style>
 </head>
 <body>
-  <header>
-    <div class="logo-section">
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAABF1BMVEX///8AZv8Amf8AAADMzMyE2/8AX/8Al//Y7f8bpv/g8v9Yuf8AWv/S3f8zM2bf5v+ZzP/w9/+Ptf9VsP8Ak/8AY//r8v9gnP+IsP8gff8AXv+Fyv/0+f+ZvP8Inf+I0f/19fXr6+vf399Rkf9spv+Ys//U1NS/3v+Bqv8mcP/JyckqKiosLGKysrKJiaOxz//h4egbGxucnJxNTU02NjZoaGi16f/FxdMZGVk4OGmioqJVVVUeHh6FhYUQEBBsbGypqbt4eJe7u7s0NDRERER4eHgVpf/Z2eJKSnhkZIlUVH0jI123t8ZGRnN7e5mp2P8AVP+d4v/S8v+96/99wP+dnbIUFFeXl7Gy4P+wzf+81v/K5v+NjY2GNDzBAAAKsklEQVR4nO2de3/aNhfHnSsEUlJGlnYJy2S6h7RAWLg3EHLhlntp0vVJt/D+X8cksHWxLRuKLV8++u2fBXosfXOOzpFkW1EUKSkpKSnhSsRFKZH2AS/9Ok5mtsRolDx4jYsGfD0Y7cZiq4IUi8Uy44RIvux4tCuKTodcTb4KBHy7Ksx9FGPmSBjh20PxfAhxS9Rg/OEPIFRSTE5NZ6hfqxDh5g7fCiEcH2K8USYpQFtk1GeEJFTswq1xPCFC8dcDHXE0FgAY39KaEzbu4cAY64h/C2htPNIaE1ieFCU5Q4xlBOSaA20YbnnfFKVXnVDAQNQIYwfeN0VrVzzhH943RUsSuihJ6JEkoYuShB5JErooSeiRJKGLEkAIrluta8B+FinCk++3jze330+YD30kBGpuEanAqYHrq8+lVKpUurqmP/WTMF8orOP/6P+3+rSQBw7Xb93ep6ZiEX0lXF9EToStm1JKF40YGcLWHQFkEKNCyALCQMXpxudxuIBsCQ2AEPFB/8rPaqEuJptLt+5SRsIvuhMjUQ8h4OfyDSdMo0A4BQTqYymqhHAMQkA4rulI/XwJtK/Dn0t1QDiuSxixdIfLRegJYaHXAKHwrOamhf9B2Akh4P0L+ea2NPMgAQw7IQQsvdBfXJUMgCEnfDgtnb4whRLclVhAXwlzCxHmgOmKD6XS6SXzCXgopVhAX6sFWGhKA4zXAw+p0uMl8zG4/GzwYJjroTWg0YMhJuQA3hoBw0toBlRhiLIbGFP5Og4XE3MxC8Dy/6lVIZGvuTS/iJhcCrOoCfD+3grQ5xXwAsWCWQFbAZasAcNZ8VspWAcBfe2TcooDGEpC9a6UmhswlFFavk+VmSuflE8/8wD9zTSLCWh2LbRbCKgL2wL6Ww9/rlig5UOqTH5GgF+4gGGs+DfTRS5GdAAMIeHJaYpGdAIMIeGDRjhDVMspe8AQEn7B+2kQ8fo2ZZNkpgrgvNThMtT+/dXLaem+bLcZrgSx4hfse3xyw2xtl74Dh2ZDR/jwSPPdmldLRoWOsEwB3lzO0WzoCK9mcKnT00enEThT8Oal9oRo1n36eHP35dI5PmcK4ArYlrB1e3f18mBfH1iFrR6eGB8IclTYCBeXJHRRktAjSUIXJQk9kiR0UZLQI0lCFyUJPZIkdFGS0CNJQhclCT2SD4SRP3FA8KkRIgl/6Cd//PC+LUoCCf04vUURSqgkNR/GRmP3D9cLBCE5CCt26PrhemNeYIgkxE70QLHdLc7wFkoY3/IOEcaFNaJQQmU88vDIPQ6iWEJYMbxEtDzQSzCh8pr08uBLK0TRhEpinFnd9exsPQtE4YQw3xyN/3b9cD0+og+EipJNu324XoaP6Auh+4pnYjzEiBAqiS0eYlQI+YiRIVTSI2vE6BAq2UOMeEghRohQSVOIZAIXJUIliwOVmqNGipAaiwQxWoRURo0daod4R4wQIq4avBg1QiWRWWW9GDlCJW5AjB4hg/hDAGE2LUYcxCMOIWucXQbwn1+E6P0OB5FzFjRr/O8SiHvvtjdF6Os/dKsUonYrwUi4vU8Zb79f4rDvvXebKyK0/RfT7Cv1RwosCZlebYaQ0IQYPUIqUKNKaECMJdlkEgVCFvHQcG89EoQMorHgR4OQ7MDFRsa/OOEN4a8eypJQiR+g/fXdWNJ0c3Ef2rhO+Ok3D/XpX8vms/E/ksnxqxkA2bhNuPnLnpfizbuyUFb9gvrtV3cJ939fZn7rgbKScD5JQh8lCeeUJPRRknBOSUILAVV/yTs31wv3mlUup9mAOS38IswV2heDszWoynmn27N/d12Xmu9VO4MK1Fm9MZnTyBdCkG931hj1h4Wck5Xa69YZo3q3NwejH4T5KtvTmRr23VV7w3OTzfnQmVE8ITjuWPChcJ3k+Vb5YcXS6LxrYzSVcEIwObMGhOr0AMfouMY3OrbvmmhCdcjtKlT9GFgZgbZVWOsqVoNEqDbsADmIoF20NTq3RRRMeGEPCJNqzwx4bA8IEduBIZw4Aa6t1UyZo2AXojOdFQJC2DPkw36n0Wh0DEXgwlAYVUOSqTSQkSFd9UEwCAd0p4rV/Ox861yBHZxsbgRV5svhem5mtM6mrGEgCJkYHVLH6YI87ZIa48Q87fcGY8QMau6USCAhoMZTceaorH7fWqV7SzsR0L+W6mwCk9CMGPd23CTcefdJ08rHBQjbxBv1acZ8ftpAaqJ7DYAKug7lD5UGBAhvZvT0bMQHCxCuYID/WRN+2NQ22ff/XICQTNbOJ6SrSN9Qb6mEQqXTYxYwS4yeUDsU4mQBwm39LsE+jxDbLECYI0HagD8+T3up91ZhvNXF02lAkhPy7BQQG8H+5kiSqixCuKJ/5CZhFWeTemHmQei6bwQRdHFnSa4BBLs3A4SuS1CIbVJrOKsMcYQkl1zAZpsbG2gkNfWYgz/kSBRjwnXGhfBfNxXN/Vp050jscyY24ghxV87gNDIxG3xpPKygE1XSWTwQ23T/4b9GgAoxStAjsRsYwvo6ik7Uuyx24cZGAk6w6YicqUF/BEMadfGZGEHPt3Hw13wmzOGcMQAIrZlW0hQg6mwB40zrAhIObTTzbCLCLAWI4qCHExinIgojzA+o3zWKzua3J6qvKP7yNoSD9Wl0Go2yynotsIQGzUHYNBtllXxgCKkoZQcgCTgSpW0ToRalZqPgRCmVafJK9pups9aZ5oL+yGwEBy9ZHvtOiNPiWZvJhzM9MVs4uFqQWtBm5nmaEVMtOAsocYRDuiumgYiKN/YGqfgkcC9y5jBtMosS3ys+KVyDPF5XUC4EZJJNZm1ksnreMzkRuZDaw+GsEMUR5nFKOEfxxMTpdBLdx33FqZReUzZUAyICpFzo/8ybWj314Ro3S3mxiVqmFohkX4le5CJuChEBgipZc/L2MQQSUr2pIYa0Vr2bz4aVHr0CJtPxteLU6FlfAaPe9ojfudsYAgnpXYzatB5M3xOePkEPJtSOG7OLQe1SDaa5ZPp28eyx+2PqinVOqyIJFXpbpU7GGlSe3lLssDtRlFFxSH+V69I7xdwdU5GEzG7iWaeqd7d3wez5GnYTu/R3A8yY7w7ojVbuRpRYwgLd2bVKvdaYVIeNAbtpPzSs1XMM/nl/0OhWu41an91IBsEgVNjdXdRh013P2rrRqGc2MlmZ73b4RMjuelvpzHw3kJqv8sRZ3vtB6IRYsbrdCZxu6HRBgAgV/s3cNbwVviCinQd9IFRsbgIPuMOpbX5KAYupO0EgVHqcG54V4301xojn+7rNrUO/CBW12ze7pFKzf+JAndQtnjbpd3/qaROvCdF0hC2ClXoHb1xwle/WWO8XB0OnR018I0SrwWGjVi9C9QedxsRUBC2ltoedWrGoWQ3bP/3UlwhCpFzhGGm+x9Ow0fFMvL8yb5KfhGIUOMI982GJe0tdMGiE2aO3Jh0tc0FJaGmz80F/cXs7pIRf8evd1oR7v3/Upb88HjJC3P+P1u/CKWnTq2QhI3R+F86kkBH+hCTh/P2RhItfURLOJ/dmbVkLLXfBoBG6Lkk4pyShj5KEc0oS+ijXCTffv9kJlN64TbiyuR0w4eNbQnECz1KShJLQ7/47SxJKQr/77yxJaE/44avfhd1ZXz8uc49n500ItOPMISUlJSW1pP4D307iS6xfTsMAAAAASUVORK5CYII=" alt="Your Logo" id="logo">
-      <span id="heading">JaySummBot</span>
-    </div>
-  </header>
-
   <div class="container mx-auto px-4">
-    <h1 class="text-3xl font-bold text-center my-8">Text Summarizer</h1>
+    <div class="flex items-center justify-center my-8">
+      <span id="botName" class="text-2xl font-bold text-blue-500">JaySummBot</span>
+      <span class="mx-2">-</span>
+      <div class="text-2xl font-bold">Text Summarizer</div>
+    </div>
 
     <div class="grid grid-cols-2 gap-4">
-      <div class="bg-gray-100 p-4 rounded input-section">
+      <div class="bg-gray-100 p-4 rounded">
         <h2 class="text-xl font-semibold mb-4">Input Text</h2>
         <form id="summarizeForm" method="post">
-          <textarea name="text" class="w-full rounded-lg p-4"></textarea>
-          <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-lg mt-4">Summarize</button>
+          <textarea name="text" class="w-full rounded-lg p-4" rows="10"></textarea>
+
+          <button type="submit" class="bg-blue-500 hover:bg-green-700 text-white font-semibold px-4 py-2 rounded-lg mt-4">Summarize</button>
         </form>
       </div>
 
-      <div class="bg-gray-100 p-4 rounded output-section">
+      <div class="bg-gray-100 p-4 rounded">
         <h2 class="text-xl font-semibold mb-4">Summarized Text</h2>
         <div id="summary" class="w-full rounded-lg p-4"></div>
       </div>
@@ -136,3 +74,6 @@
   </script>
 </body>
 </html>
+
+
+
