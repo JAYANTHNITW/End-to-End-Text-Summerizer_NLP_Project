@@ -1,4 +1,6 @@
 # End-to-End-Text-Summerizer_NLP_Project
+## Watch the video: My Reflection on the Project:
+[![Video Demo](https://img.youtube.com/vi/1jpHqJZXEyA/0.jpg)](https://www.youtube.com/watch?v=1jpHqJZXEyA)
 
 ...
 ## Workflow
